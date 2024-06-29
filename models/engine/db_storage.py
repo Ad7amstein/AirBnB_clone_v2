@@ -14,16 +14,18 @@ from sqlalchemy.orm import sessionmaker, scoped_session
 
 
 environ = os.environ
+
+
 class DBStorage:
     """Represents the database storage"""
     __engine = None
-    __session =  None
+    __session = None
 
     def __init__(self):
         """Initialization method"""
         user, password, host_name, db_name = environ['HBNB_MYSQL_USER'],\
-                environ['HBNB_MYSQL_PWD'], environ['HBNB_MYSQL_HOST'],\
-                environ['HBNB_MYSQL_DB']
+            environ['HBNB_MYSQL_PWD'], environ['HBNB_MYSQL_HOST'],\
+            environ['HBNB_MYSQL_DB']
         self.__engine = create_engine(
                 "mysql+mysqldb://{}:{}@{}/{}".format(
                     user, password, host_name, db_name), pool_pre_ping=True)
@@ -50,7 +52,7 @@ class DBStorage:
                     key = cls.__name__ + '.' + instance.id
                     objects[key] = instance
         return objects
-    
+
     def new(self, obj):
         """Add new object"""
         self.__session.add(obj)
