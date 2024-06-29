@@ -34,18 +34,18 @@ class DBStorage:
         """Query all objects"""
         classes = {
                     'State': State, 'City': City,
+                    'User': User,
                     }
         objects = {}
         if cls is None:
             for class_name in classes:
                 instances = self.__session.query(classes[class_name]).all()
-                print(f"INSTANCES: {instances}")
                 for instance in instances:
                     key = class_name + '.' + instance.id
                     objects[key] = instance
         else:
             if cls.__name__ in classes:
-                instances = self.__session.query(classes[cls.__name__]).all()
+                instances = self.__session.query(cls).all()
                 for instance in instances:
                     key = cls.__name__ + '.' + instance.id
                     objects[key] = instance
