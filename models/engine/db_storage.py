@@ -36,7 +36,7 @@ class DBStorage:
         """Query all objects"""
         classes = {
                     'State': State, 'City': City,
-                    'User': User,
+                    'User': User, 'Place': Place,
                     }
         objects = {}
         if cls is None:
