@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-# Deploy archive
+"""
+Deploy archive
+"""
 
 from fabric.api import put, run, env
 from os.path import exists
